@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, NSTabViewDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
-@property (weak) IBOutlet WebView *webView;
+@property (weak) IBOutlet NSView *mainView;
+//@property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet WebView *loaderView;
+@property (weak) IBOutlet NSTabView *tabView;
 
 @end

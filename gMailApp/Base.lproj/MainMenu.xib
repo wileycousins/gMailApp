@@ -15,7 +15,8 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="loaderView" destination="wv8-c4-bRA" id="Kd8-UT-x3G"/>
-                <outlet property="webView" destination="kpq-qj-rhx" id="PR6-vq-9de"/>
+                <outlet property="mainView" destination="EiT-Mj-1SZ" id="L7s-vh-lUn"/>
+                <outlet property="tabView" destination="d8l-Ab-Cl5" id="EJr-Dg-hw0"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -671,22 +672,23 @@
         </menu>
         <window title="gMailApp" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="1100" height="600"/>
+            <rect key="contentRect" x="63" y="378" width="1100" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="1100" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpq-qj-rhx">
-                        <rect key="frame" x="0.0" y="0.0" width="1100" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                    <tabView fixedFrame="YES" drawsBackground="NO" controlSize="mini" type="leftTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5">
+                        <rect key="frame" x="5" y="0.0" width="1095" height="602"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                        <tabViewItems/>
                         <connections>
-                            <outlet property="UIDelegate" destination="QvC-M9-y7g" id="dOf-IS-QUy"/>
-                            <outlet property="policyDelegate" destination="QvC-M9-y7g" id="JR6-jK-OBi"/>
+                            <outlet property="delegate" destination="QvC-M9-y7g" id="BcX-II-UcQ"/>
                         </connections>
-                    </webView>
+                    </tabView>
                 </subviews>
             </view>
         </window>
