@@ -103,5 +103,29 @@
 
   }
 }
+- (IBAction)addNewAccount:(id)sender {
+  // load gmail
+  NSInteger index = [[tabView tabViewItems] count];
+  NSString *urlAddress = [NSString stringWithFormat:@"https://mail.google.com/mail/u/%ld",(long)index];
+  NSURL *url = [NSURL URLWithString:urlAddress];
+  NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+  
+  NSString *tabName = [NSString stringWithFormat:@"tab%ld",(long)index];
+  NSTabViewItem *item = [[NSTabViewItem alloc] initWithIdentifier:tabName ];
+  WebView *newWebView = [[WebView alloc] init];
+  [newWebView setUIDelegate:self];
+  [newWebView setPolicyDelegate:self];
+  [newWebView setFrameLoadDelegate:self];
+  [item setView: newWebView];
+  [item setLabel:tabName];
+  [tabView addTabViewItem:item];
+  [tabView selectTabViewItemAtIndex: index];
+  
+  [[newWebView mainFrame] loadRequest:requestObj];
+}
+
+- (IBAction)closeTab:(id)sender {
+  [tabView removeTabViewItem:[tabView selectedTabViewItem]];
+}
 
 @end
