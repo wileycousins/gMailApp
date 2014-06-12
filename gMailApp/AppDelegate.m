@@ -46,24 +46,9 @@
   [[newWebView mainFrame] loadRequest:requestObj];
 }
 
-int signInCount = -1;
 - (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
 {
   NSString *host = [[request URL] host];
-//  if ([host rangeOfString:@"https://mail.google.com/mail/u/"].location != NSNotFound && (signInCount++ % 2 == 0 )) {
-//    NSLog(@"sign in to new account");
-//    NSInteger index = [[tabView tabViewItems] count];
-//    NSString *tabName = [NSString stringWithFormat:@"tab%ld",(long)index];
-//    NSTabViewItem *item = [[NSTabViewItem alloc] initWithIdentifier:tabName ];
-//    WebView *newWebView = [[WebView alloc] init];
-//    [newWebView setUIDelegate:self];
-//    [newWebView setPolicyDelegate:self];
-//    [item setView: newWebView];
-//    [item setLabel:tabName];
-//    [tabView addTabViewItem:item];
-//    [tabView selectTabViewItemAtIndex: index];
-//    [[newWebView mainFrame] loadRequest:request];
-//  }
   if ( sender == loaderView && host != nil && [host rangeOfString:@"accounts.google"].location == NSNotFound && [host rangeOfString:@"mail.google"].location == NSNotFound && [host rangeOfString:@"clients6.google"].location == NSNotFound) {
     [listener ignore];
     [[NSWorkspace sharedWorkspace] openURL:[request URL]];
