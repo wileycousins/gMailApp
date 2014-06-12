@@ -18,6 +18,7 @@
 		A5E584A6194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E58485194A2F8E00BAEEAD /* Cocoa.framework */; };
 		A5E584AE194A2F8E00BAEEAD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E584AC194A2F8E00BAEEAD /* InfoPlist.strings */; };
 		A5E584B0194A2F8E00BAEEAD /* gMailAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E584AF194A2F8E00BAEEAD /* gMailAppTests.m */; };
+		A5E584BA194A301F00BAEEAD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E584B9194A301F00BAEEAD /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		A5E584AB194A2F8E00BAEEAD /* gMailAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "gMailAppTests-Info.plist"; sourceTree = "<group>"; };
 		A5E584AD194A2F8E00BAEEAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5E584AF194A2F8E00BAEEAD /* gMailAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gMailAppTests.m; sourceTree = "<group>"; };
+		A5E584B9194A301F00BAEEAD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E584BA194A301F00BAEEAD /* WebKit.framework in Frameworks */,
 				A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +98,7 @@
 		A5E58484194A2F8E00BAEEAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5E584B9194A301F00BAEEAD /* WebKit.framework */,
 				A5E58485194A2F8E00BAEEAD /* Cocoa.framework */,
 				A5E584A4194A2F8E00BAEEAD /* XCTest.framework */,
 				A5E58487194A2F8E00BAEEAD /* Other Frameworks */,
