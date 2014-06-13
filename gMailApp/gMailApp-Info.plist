@@ -6,10 +6,8 @@
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>gmail-icons</string>
 	<key>CFBundleIdentifier</key>
-	<string>wileycousins.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.wileycousins.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
