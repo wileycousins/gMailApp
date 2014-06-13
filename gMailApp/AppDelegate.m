@@ -53,6 +53,12 @@
   return newWebView;
 }
 
+- (IBAction)newBrowserWindow:(id)sender {
+  NSURL *url = [NSURL URLWithString:@"https://google.com/apps"];
+  NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+  [[loaderView mainFrame] loadRequest:requestObj];
+}
+
 - (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
 {
   NSString *host = [[request URL] host];
