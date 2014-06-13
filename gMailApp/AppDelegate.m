@@ -65,10 +65,13 @@
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
-  NSLog(@"%@", notification.description);
   for( NSTabViewItem *item in [tabView tabViewItems] ){
     if ([item.label isEqualToString:[notification title]]){
       [tabView selectTabViewItem:item];
+      WebView *webView = [item view];
+      if (webView != nil) {
+        [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].click();"];
+      }
     }
   }
 }
