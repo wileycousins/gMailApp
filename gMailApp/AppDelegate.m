@@ -111,9 +111,9 @@ NSInteger unread = 0;
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame
 {
   for( NSTabViewItem *item in [tabView tabViewItems] ){
-    if (frame == [[item view] mainFrame]) {
+    WebView *itemView = (WebView *)[item view];
+    if (frame == [itemView mainFrame]) {
       [item setLabel:title];
-//      NSLog(@"Title: %@", title);
       if( [title rangeOfString:@"("].location != NSNotFound ){
         NSInteger start = [title rangeOfString:@"("].location+1;
         NSInteger end = [title rangeOfString:@")"].location;
@@ -136,7 +136,7 @@ NSInteger unread = 0;
         }
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = uString;
-        WebView *webView = [[tabView selectedTabViewItem] view];
+        WebView *webView = (WebView *)[[tabView selectedTabViewItem] view];
         NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
         NSLog(@"msg: %@",msg);
         notification.informativeText = msg;
