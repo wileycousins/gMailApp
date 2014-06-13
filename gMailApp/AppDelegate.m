@@ -30,19 +30,37 @@
   // clear old notifications
   [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
   
-  //register to listen for event
-  [[NSNotificationCenter defaultCenter]
-   addObserver:self
-   selector:@selector(eventHandler:)
-   name:@"eventType"
-   object:nil ];
-
+  // load user defaults
+  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  NSArray *tabs = [settings valueForKey:@"tabs"];
   
-  // load gmail
-  NSString *urlAddress = @"http://mail.google.com/";
-  NSURL *url = [NSURL URLWithString:urlAddress];
-  NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-  [self addNewTab:requestObj];
+  // if there are saved tabs, load them
+  if (tabs != nil && tabs.count > 0) {
+    for( NSString *urlAddress in tabs){
+      NSURL *url = [NSURL URLWithString:urlAddress];
+      NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+      [self addNewTab:requestObj];
+    }
+  } else {
+    // load gmail
+    NSString *urlAddress = @"http://mail.google.com/";
+    NSURL *url = [NSURL URLWithString:urlAddress];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [self addNewTab:requestObj];
+  }
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+  // save open windwos to user defaults
+  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  NSMutableArray *tabs = [[NSMutableArray alloc] init];
+  for( NSTabViewItem *item in [tabView tabViewItems] ){
+    WebView *webView = [item view];
+    NSString *url = [[[[[webView mainFrame] dataSource] request] URL] absoluteString];
+    if (url != nil)
+      [tabs addObject:url];
+  }
+  [settings setValue:[NSArray arrayWithArray:tabs] forKey:@"tabs"];
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
@@ -54,12 +72,6 @@
       [tabView selectTabViewItem:item];
     }
   }
-}
-
-//event handler when event occurs
--(void)eventHandler: (NSNotification *) notification
-{
-  NSLog(@"event triggered");
 }
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
@@ -81,7 +93,6 @@
   [item setLabel:tabName];
   [tabView addTabViewItem:item];
   [tabView selectTabViewItemAtIndex: index];
-  
   [[newWebView mainFrame] loadRequest:request];
   
   return newWebView;
@@ -123,7 +134,7 @@
 
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
   for( NSTabViewItem *item in [tabView tabViewItems] ){
-    if (frame == [[item view] mainFrame]) {
+    if (frame == [[item view] mainFrame] && [title rangeOfString:@"@"].location != NSNotFound) {
       NSString *tabTitle;
       NSInteger start = [title rangeOfString:@"- "].location+2;
       NSInteger end = [title rangeOfString:@" -" options:NSBackwardsSearch].location;
