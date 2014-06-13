@@ -96,11 +96,16 @@ NSInteger unread = 0;
         NSInteger start = [title rangeOfString:@"("].location+1;
         NSInteger end = [title rangeOfString:@")"].location;
         NSString *uString = [title substringWithRange:NSMakeRange(start,end-start)];
-        if ( [uString integerValue] > unread)
-          unread = [uString integerValue];
+//        if ( [uString integerValue] > unread)
+        unread = [uString integerValue];
+      } else {
+        unread = 0;
       }
       
-      [[[NSApplication sharedApplication] dockTile]setBadgeLabel:[NSString stringWithFormat:@"%ld",(long)unread]];
+      [[[NSApplication sharedApplication] dockTile] setBadgeLabel:[NSString stringWithFormat:@"%ld",(long)unread]];
+      if ( unread == 0 ) {
+        [[[NSApplication sharedApplication] dockTile] setBadgeLabel:nil];
+      }
     }
 
   }
