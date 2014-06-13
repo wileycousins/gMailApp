@@ -54,7 +54,7 @@
 }
 
 - (IBAction)newBrowserWindow:(id)sender {
-  NSURL *url = [NSURL URLWithString:@"https://google.com/apps"];
+  NSURL *url = [NSURL URLWithString:@"https://google.com"];
   NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
   [[loaderView mainFrame] loadRequest:requestObj];
 }
