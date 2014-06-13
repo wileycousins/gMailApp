@@ -127,6 +127,7 @@ NSInteger unread = 0;
       if ( unread == 0 ) {
         [[[NSApplication sharedApplication] dockTile] setBadgeLabel:nil];
       } else {
+        // set the notification center stuff
         NSString *uString;
         if( [title rangeOfString:@"@"].location != NSNotFound ){
           NSInteger start = [title rangeOfString:@"-"].location+1;
