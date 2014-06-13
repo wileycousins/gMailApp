@@ -12,7 +12,6 @@
 
 @synthesize window;
 @synthesize mainView;
-//@synthesize webView;
 @synthesize loaderView;
 @synthesize tabView;
 
@@ -20,9 +19,22 @@
 {
   // make tabView be full size
   [window setContentView:tabView];
+  [tabView setDelegate:self];
   
-  // set delegates
-  [window setDelegate:self];
+  // load gmail
+  NSString *urlAddress = @"http://mail.google.com/";
+  NSURL *url = [NSURL URLWithString:urlAddress];
+  NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+  
+  [self addNewTab:requestObj];
+  
+  [loaderView setPolicyDelegate:self];
+  [loaderView setResourceLoadDelegate:self];
+  
+  [window setInitialFirstResponder:tabView];
+}
+
+- (WebView*)addNewTab:(NSURLRequest *)request {
   
   NSInteger index = [[tabView tabViewItems] count];
   NSString *tabName = [NSString stringWithFormat:@"tab%ld",(long)index];
@@ -36,14 +48,9 @@
   [tabView addTabViewItem:item];
   [tabView selectTabViewItemAtIndex: index];
   
-  [loaderView setPolicyDelegate:self];
-  [loaderView setResourceLoadDelegate:self];
+  [[newWebView mainFrame] loadRequest:request];
   
-  // load gmail
-  NSString *urlAddress = @"http://mail.google.com/";
-  NSURL *url = [NSURL URLWithString:urlAddress];
-  NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-  [[newWebView mainFrame] loadRequest:requestObj];
+  return newWebView;
 }
 
 - (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id < WebPolicyDecisionListener >)listener
@@ -61,18 +68,7 @@
   NSString *host = [[request URL] host];
   if ([host rangeOfString:@"mail.google.com"].location != NSNotFound || [host rangeOfString:@"accounts.google.com"].location != NSNotFound ) {
     NSLog(@"sign in to new account");
-    NSInteger index = [[tabView tabViewItems] count];
-    NSString *tabName = [NSString stringWithFormat:@"tab%ld",(long)index];
-    NSTabViewItem *item = [[NSTabViewItem alloc] initWithIdentifier:tabName ];
-    WebView *newWebView = [[WebView alloc] init];
-    [newWebView setUIDelegate:self];
-    [newWebView setPolicyDelegate:self];
-    [newWebView setFrameLoadDelegate:self];
-    [item setView: newWebView];
-    [item setLabel:tabName];
-    [tabView addTabViewItem:item];
-    [tabView selectTabViewItemAtIndex: index];
-    [[newWebView mainFrame] loadRequest:request];
+    [self addNewTab:request];
     [listener use ];
   } else {
     [[loaderView mainFrame] loadRequest:request];
@@ -117,18 +113,7 @@ NSInteger unread = 0;
   NSURL *url = [NSURL URLWithString:urlAddress];
   NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
   
-  NSString *tabName = [NSString stringWithFormat:@"tab%ld",(long)index];
-  NSTabViewItem *item = [[NSTabViewItem alloc] initWithIdentifier:tabName ];
-  WebView *newWebView = [[WebView alloc] init];
-  [newWebView setUIDelegate:self];
-  [newWebView setPolicyDelegate:self];
-  [newWebView setFrameLoadDelegate:self];
-  [item setView: newWebView];
-  [item setLabel:tabName];
-  [tabView addTabViewItem:item];
-  [tabView selectTabViewItemAtIndex: index];
-  
-  [[newWebView mainFrame] loadRequest:requestObj];
+  [self addNewTab:requestObj];
 }
 
 - (IBAction)closeTab:(id)sender {
