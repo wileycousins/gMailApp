@@ -51,6 +51,7 @@
   }
 }
 
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
   // save open windwos to user defaults
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -62,6 +63,11 @@
       [tabs addObject:url];
   }
   [settings setValue:[NSArray arrayWithArray:tabs] forKey:@"tabs"];
+}
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    if(!window.isVisible) {
+        [window makeKeyAndOrderFront:self];
+    }
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
