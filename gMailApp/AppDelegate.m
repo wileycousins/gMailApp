@@ -37,7 +37,7 @@
 - (WebView*)addNewTab:(NSURLRequest *)request {
   
   NSInteger index = [[tabView tabViewItems] count];
-  NSString *tabName = [NSString stringWithFormat:@"tab%ld",(long)index];
+  NSString *tabName = [NSString stringWithFormat:@"gMail - %ld",(long)index];
   NSTabViewItem *item = [[NSTabViewItem alloc] initWithIdentifier:tabName ];
   WebView *newWebView = [[WebView alloc] init];
   [newWebView setUIDelegate:self];
@@ -70,7 +70,7 @@
   }
 }
 - (void)webView:(WebView *)sender decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id<WebPolicyDecisionListener>)listener {
-//  [[sender mainFrame] loadRequest: request];
+  
   NSString *host = [[request URL] host];
   if ([host rangeOfString:@"mail.google.com"].location != NSNotFound || [host rangeOfString:@"accounts.google.com"].location != NSNotFound ) {
     NSLog(@"sign in to new account");
@@ -98,7 +98,6 @@ NSInteger unread = 0;
         NSInteger start = [title rangeOfString:@"("].location+1;
         NSInteger end = [title rangeOfString:@")"].location;
         NSString *uString = [title substringWithRange:NSMakeRange(start,end-start)];
-//        if ( [uString integerValue] > unread)
         unread = [uString integerValue];
       } else {
         unread = 0;
