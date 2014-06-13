@@ -1,4 +1,5 @@
-gMailApp
+# <img src="https://raw.githubusercontent.com/wileycousins/gMailApp/master/gMailApp/gmail-icon.png" alt="gMailApp"  width=15% style="float:right;" />
+gMailApp 
 ========
 
 a basic OS X app for gmail
