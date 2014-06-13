@@ -12,17 +12,16 @@
 @implementation MyWindow
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
-  NSLog(@"initing window");
-  
   self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
   
   if (self){
-    // set delegates
+    // set delegate
     [self setDelegate: self];
   }
   return self;
 }
 
+// ctrl + shift + tab
 -(void)selectPreviousKeyView:(id)sender{
   NSTabView *view = self.contentView;
   if(view != nil) {
@@ -34,6 +33,7 @@
   }
 }
 
+// ctrl + tab
 -(void)selectNextKeyView:(id)sender {
   NSTabView *view = self.contentView;
   if(view != nil) {
@@ -45,29 +45,10 @@
   }
 }
 
+// make sure we can handle events properly
 - (BOOL)acceptsFirstResponder
 {
   return YES;
-}
-
-//- (BOOL)performKeyEquivalent:(NSEvent *)theEvent
-- (void)keyDown:(NSEvent *)theEvent // canBecomeKeyView
-{
-  NSString *characters;
-  
-  // if using performKeyEquivalent: enable below
-  // if([[self window] firstResponder] != self) return NO;
-  
-  // get the pressed key
-  characters = [theEvent characters];
-  
-  if ([characters isEqual:@"\t"]) {
-//    [[self window] selectNextKeyView:self];
-    
-    return;
-  } else {
-    return;
-  }
 }
 
 @end

@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>gmail-icons</string>
 	<key>CFBundleIdentifier</key>
-	<string>WileyCousins.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>wileycousins.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>

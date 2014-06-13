@@ -15,7 +15,6 @@
 
 @property (assign) IBOutlet MyWindow *window;
 @property (weak) IBOutlet NSView *mainView;
-//@property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet WebView *loaderView;
 @property (weak) IBOutlet NSTabView *tabView;
 

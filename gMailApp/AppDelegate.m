@@ -41,6 +41,7 @@
       NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
       [self addNewTab:requestObj];
     }
+    [tabView selectTabViewItemAtIndex:0];
   } else {
     // load gmail
     NSString *urlAddress = @"http://mail.google.com/";
@@ -66,18 +67,10 @@
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
   NSLog(@"%@", notification.description);
   for( NSTabViewItem *item in [tabView tabViewItems] ){
-    NSLog(@"|%@|", item.label);
-    NSLog(@"|%@|", [notification title]);
     if ([item.label isEqualToString:[notification title]]){
       [tabView selectTabViewItem:item];
     }
   }
-}
-
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
-     shouldPresentNotification:(NSUserNotification *)notification
-{
-  return YES;
 }
 
 - (WebView*)addNewTab:(NSURLRequest *)request {
@@ -118,7 +111,6 @@
   
   NSString *host = [[request URL] host];
   if ([host rangeOfString:@"mail.google.com"].location != NSNotFound || [host rangeOfString:@"accounts.google.com"].location != NSNotFound ) {
-    NSLog(@"sign in to new account");
     [self addNewTab:request];
     [listener use ];
   } else {
@@ -132,15 +124,20 @@
   return loaderView;
 }
 
+// updated title on a webview
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
-  for( NSTabViewItem *item in [tabView tabViewItems] ){
-    if (frame == [[item view] mainFrame] && [title rangeOfString:@"@"].location != NSNotFound) {
+  // iterate through the tabs
+  for( NSTabViewItem *tabItem in [tabView tabViewItems] ){
+    // is this the right tab? does this title have the email in it?
+    if (frame == [[tabItem view] mainFrame] && [title rangeOfString:@"@"].location != NSNotFound) {
       NSString *tabTitle;
       NSInteger start = [title rangeOfString:@"- "].location+2;
       NSInteger end = [title rangeOfString:@" -" options:NSBackwardsSearch].location;
       tabTitle = [title substringWithRange:NSMakeRange(start,end-start)];
-      [item setLabel:tabTitle];
+      [tabItem setLabel:tabTitle];
       NSInteger unread = 0;
+      
+      // check if there are unread messages
       if( [title rangeOfString:@"("].location != NSNotFound ){
         start = [title rangeOfString:@"("].location+1;
         end = [title rangeOfString:@")"].location;
@@ -149,27 +146,29 @@
         unread = 0;
       }
       
+      // updat the badge count
       [[[NSApplication sharedApplication] dockTile] setBadgeLabel:[NSString stringWithFormat:@"%ld",(long)unread]];
+      
       if ( unread == 0 ) {
+        // hide the badge count
         [[[NSApplication sharedApplication] dockTile] setBadgeLabel:nil];
+        
+        // check if there are any notifications in the center that need to be dismissed, since there is no mail
         for ( NSUserNotification *notification in [[NSUserNotificationCenter defaultUserNotificationCenter] deliveredNotifications] ) {
-          if ([item.label isEqualToString:[notification title]]){
+          if ([tabItem.label isEqualToString:[notification title]]){
             [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
           }
         }
       } else {
-        // set the notification center stuff
+        // set the notification center message
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = tabTitle;
         WebView *webView = [[tabView selectedTabViewItem] view];
-        NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
-        NSLog(@"msg: %@",msg);
-        notification.informativeText = msg;
+        if (webView != nil) {
+          NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
+          notification.informativeText = msg;
+        }
         notification.soundName = NSUserNotificationDefaultSoundName;
-        
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"eventType"
-         object:nil ];
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
       }
@@ -189,6 +188,13 @@
 
 - (IBAction)closeTab:(id)sender {
   [tabView removeTabViewItem:[tabView selectedTabViewItem]];
+}
+
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification
+{
+  return YES;
 }
 
 @end
