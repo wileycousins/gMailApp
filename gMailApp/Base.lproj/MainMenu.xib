@@ -71,24 +71,18 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="File" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                            <menuItem title="New Tab" keyEquivalent="n" id="Was-JA-tGl">
                                 <connections>
                                     <action selector="addNewAccount:" target="Voe-Tx-rLC" id="XaS-VE-xjk"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                            <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                            <menuItem title="Close Tab" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>
                                     <action selector="closeTab:" target="Voe-Tx-rLC" id="hq8-I0-2BC"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                <connections>
-                                    <action selector="runPageLayout:" target="-1" id="Din-rz-gC5"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
                                 <connections>
                                     <action selector="print:" target="-1" id="qaZ-4w-aoO"/>
@@ -326,11 +320,39 @@
                                     <action selector="toggleToolbarShown:" target="-1" id="BXY-wc-z0C"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem isSeparatorItem="YES" id="pJC-eV-d5Y"/>
+                            <menuItem title="Switch tab to left" keyEquivalent="]" id="2aj-Kf-gl8">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                 <connections>
-                                    <action selector="runToolbarCustomizationPalette:" target="-1" id="pQI-g3-MTW"/>
+                                    <action selector="selectNextTabViewItem:" target="d8l-Ab-Cl5" id="2cP-xi-4rJ"/>
                                 </connections>
+                            </menuItem>
+                            <menuItem title="Switch tab to right" keyEquivalent="[" id="yOL-me-qf5">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="selectPreviousTabViewItem:" target="d8l-Ab-Cl5" id="P2V-WJ-Uxi"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Switch to tab number" id="8Oq-Qy-3gh">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Switch to tab number" id="f0B-3Y-6bR">
+                                    <items>
+                                        <menuItem title="Switch to tab number 1" keyEquivalent="1" id="qj4-Z0-CAP">
+                                            <connections>
+                                                <action selector="selectFirstTabViewItem:" target="d8l-Ab-Cl5" id="BN0-nM-vEp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Switch to tab number 2" keyEquivalent="2" id="zQi-v1-mcb"/>
+                                        <menuItem title="Switch to last tab" keyEquivalent="0" id="jhS-7M-xXi">
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="d8l-Ab-Cl5" id="4Cd-9H-dOc"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Item" id="N7r-pu-Slu">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
                     </menu>
@@ -384,7 +406,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="1100" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5">
+                    <tabView appearanceType="lightContent" fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5">
                         <rect key="frame" x="0.0" y="0.0" width="1100" height="604"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
