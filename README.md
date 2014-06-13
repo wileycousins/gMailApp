@@ -4,7 +4,7 @@ gMailApp
 
 a basic OS X app for gmail
 
-####[latest build here](https://www.dropbox.com/sh/ax6ewkiavvno8eo/AABynItLLgYnDbwzv3LY6Ic5a)
+####[latest build here](https://www.dropbox.com/sh/kw83miittb3z8b7/AACjIi8Ko2oxi629VoL1KUsNa)
 
 # requirements
 
