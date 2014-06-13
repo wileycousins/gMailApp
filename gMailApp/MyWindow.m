@@ -25,20 +25,24 @@
 
 -(void)selectPreviousKeyView:(id)sender{
   NSTabView *view = self.contentView;
-  NSInteger index = [view indexOfTabViewItem:view.selectedTabViewItem] +1;
-  if (index == 1)
-    [view selectLastTabViewItem:sender];
-  else
-    [view selectPreviousTabViewItem:sender];
+  if(view != nil) {
+    NSInteger index = [view indexOfTabViewItem:view.selectedTabViewItem] +1;
+    if (index == 1)
+      [view selectLastTabViewItem:sender];
+    else
+      [view selectPreviousTabViewItem:sender];
+  }
 }
 
 -(void)selectNextKeyView:(id)sender {
   NSTabView *view = self.contentView;
-  NSInteger index = [view indexOfTabViewItem:view.selectedTabViewItem] +1;
-  if (index == [[view tabViewItems] count])
-    [view selectFirstTabViewItem:sender];
-  else
-    [view selectNextTabViewItem:sender];
+  if(view != nil) {
+    NSInteger index = [view indexOfTabViewItem:view.selectedTabViewItem] +1;
+    if (index == [[view tabViewItems] count])
+      [view selectFirstTabViewItem:sender];
+    else
+      [view selectNextTabViewItem:sender];
+  }
 }
 
 - (BOOL)acceptsFirstResponder
