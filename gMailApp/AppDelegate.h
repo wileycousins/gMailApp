@@ -11,7 +11,7 @@
 #import "MyWindow.h"
 
 @class MyWindow;
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSUserNotificationCenterDelegate>
 
 @property (assign) IBOutlet MyWindow *window;
 @property (weak) IBOutlet NSView *mainView;

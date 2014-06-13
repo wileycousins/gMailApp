@@ -19,19 +19,39 @@
 {
   // make tabView be full size
   [window setContentView:tabView];
+  
+  // set delegates
   [tabView setDelegate:self];
+  [loaderView setPolicyDelegate:self];
+  [loaderView setResourceLoadDelegate:self];
+  [window setInitialFirstResponder:tabView];
+  [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+  
+  //register to listen for event
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(eventHandler:)
+   name:@"eventType"
+   object:nil ];
+
   
   // load gmail
   NSString *urlAddress = @"http://mail.google.com/";
   NSURL *url = [NSURL URLWithString:urlAddress];
   NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-  
   [self addNewTab:requestObj];
-  
-  [loaderView setPolicyDelegate:self];
-  [loaderView setResourceLoadDelegate:self];
-  
-  [window setInitialFirstResponder:tabView];
+}
+
+//event handler when event occurs
+-(void)eventHandler: (NSNotification *) notification
+{
+  NSLog(@"event triggered");
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification
+{
+  return YES;
 }
 
 - (WebView*)addNewTab:(NSURLRequest *)request {
@@ -106,6 +126,26 @@ NSInteger unread = 0;
       [[[NSApplication sharedApplication] dockTile] setBadgeLabel:[NSString stringWithFormat:@"%ld",(long)unread]];
       if ( unread == 0 ) {
         [[[NSApplication sharedApplication] dockTile] setBadgeLabel:nil];
+      } else {
+        NSString *uString;
+        if( [title rangeOfString:@"@"].location != NSNotFound ){
+          NSInteger start = [title rangeOfString:@"-"].location+1;
+          NSInteger end = [title rangeOfString:@"-" options:NSBackwardsSearch].location;
+          uString = [title substringWithRange:NSMakeRange(start,end-start)];
+        }
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = uString;
+        WebView *webView = [[tabView selectedTabViewItem] view];
+        NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
+        NSLog(@"msg: %@",msg);
+        notification.informativeText = msg;
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"eventType"
+         object:nil ];
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
       }
     }
 
