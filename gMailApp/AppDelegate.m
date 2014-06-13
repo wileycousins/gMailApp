@@ -45,6 +45,17 @@
   [self addNewTab:requestObj];
 }
 
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
+  NSLog(@"%@", notification.description);
+  for( NSTabViewItem *item in [tabView tabViewItems] ){
+    NSLog(@"|%@|", item.label);
+    NSLog(@"|%@|", [notification title]);
+    if ([item.label isEqualToString:[notification title]]){
+      [tabView selectTabViewItem:item];
+    }
+  }
+}
+
 //event handler when event occurs
 -(void)eventHandler: (NSNotification *) notification
 {
@@ -114,8 +125,8 @@
   for( NSTabViewItem *item in [tabView tabViewItems] ){
     if (frame == [[item view] mainFrame]) {
       NSString *tabTitle;
-      NSInteger start = [title rangeOfString:@"-"].location+1;
-      NSInteger end = [title rangeOfString:@"-" options:NSBackwardsSearch].location;
+      NSInteger start = [title rangeOfString:@"- "].location+2;
+      NSInteger end = [title rangeOfString:@" -" options:NSBackwardsSearch].location;
       tabTitle = [title substringWithRange:NSMakeRange(start,end-start)];
       [item setLabel:tabTitle];
       NSInteger unread = 0;
@@ -130,6 +141,11 @@
       [[[NSApplication sharedApplication] dockTile] setBadgeLabel:[NSString stringWithFormat:@"%ld",(long)unread]];
       if ( unread == 0 ) {
         [[[NSApplication sharedApplication] dockTile] setBadgeLabel:nil];
+        for ( NSUserNotification *notification in [[NSUserNotificationCenter defaultUserNotificationCenter] deliveredNotifications] ) {
+          if ([item.label isEqualToString:[notification title]]){
+            [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
+          }
+        }
       } else {
         // set the notification center stuff
         NSUserNotification *notification = [[NSUserNotification alloc] init];
