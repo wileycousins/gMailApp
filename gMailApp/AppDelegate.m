@@ -27,6 +27,9 @@
   [window setInitialFirstResponder:tabView];
   [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
   
+  // clear old notifications
+  [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
+  
   //register to listen for event
   [[NSNotificationCenter defaultCenter]
    addObserver:self
@@ -113,18 +116,19 @@
   return loaderView;
 }
 
-NSInteger unread = 0;
-- (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame
-{
+- (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
   for( NSTabViewItem *item in [tabView tabViewItems] ){
-    WebView *itemView = (WebView *)[item view];
-    if (frame == [itemView mainFrame]) {
-      [item setLabel:title];
+    if (frame == [[item view] mainFrame]) {
+      NSString *tabTitle;
+      NSInteger start = [title rangeOfString:@"-"].location+1;
+      NSInteger end = [title rangeOfString:@"-" options:NSBackwardsSearch].location;
+      tabTitle = [title substringWithRange:NSMakeRange(start,end-start)];
+      [item setLabel:tabTitle];
+      NSInteger unread = 0;
       if( [title rangeOfString:@"("].location != NSNotFound ){
-        NSInteger start = [title rangeOfString:@"("].location+1;
-        NSInteger end = [title rangeOfString:@")"].location;
-        NSString *uString = [title substringWithRange:NSMakeRange(start,end-start)];
-        unread = [uString integerValue];
+        start = [title rangeOfString:@"("].location+1;
+        end = [title rangeOfString:@")"].location;
+        unread = [[title substringWithRange:NSMakeRange(start,end-start)] integerValue];
       } else {
         unread = 0;
       }
@@ -134,15 +138,9 @@ NSInteger unread = 0;
         [[[NSApplication sharedApplication] dockTile] setBadgeLabel:nil];
       } else {
         // set the notification center stuff
-        NSString *uString;
-        if( [title rangeOfString:@"@"].location != NSNotFound ){
-          NSInteger start = [title rangeOfString:@"-"].location+1;
-          NSInteger end = [title rangeOfString:@"-" options:NSBackwardsSearch].location;
-          uString = [title substringWithRange:NSMakeRange(start,end-start)];
-        }
         NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = uString;
-        WebView *webView = (WebView *)[[tabView selectedTabViewItem] view];
+        notification.title = tabTitle;
+        WebView *webView = [[tabView selectedTabViewItem] view];
         NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
         NSLog(@"msg: %@",msg);
         notification.informativeText = msg;
@@ -155,9 +153,9 @@ NSInteger unread = 0;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
       }
     }
-
   }
 }
+
 - (IBAction)addNewAccount:(id)sender {
   // load gmail
   NSInteger index = [[tabView tabViewItems] count];
