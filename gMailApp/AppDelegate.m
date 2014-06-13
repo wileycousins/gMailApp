@@ -81,24 +81,26 @@
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-  // HACK: This is all a hack to get around a bug/misfeature in Tiger's WebKit
-  // (should be fixed in Leopard). On Javascript window.open, Tiger sends a null
-  // request here, then sends a loadRequest: to the new WebView, which will
-  // include a decidePolicyForNavigation (which is where we'll open our
-  // external window). In Leopard, we should be getting the request here from
-  // the start, and we should just be able to create a new window.
-  
   [[loaderView mainFrame] loadRequest:request];
   return loaderView;
 }
 
+NSInteger unread = 0;
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame
 {
   for( NSTabViewItem *item in [tabView tabViewItems] ){
     if (frame == [[item view] mainFrame]) {
       [item setLabel:title];
-      NSLog(@"Title: %@", title);
-      //...
+//      NSLog(@"Title: %@", title);
+      if( [title rangeOfString:@"("].location != NSNotFound ){
+        NSInteger start = [title rangeOfString:@"("].location+1;
+        NSInteger end = [title rangeOfString:@")"].location;
+        NSString *uString = [title substringWithRange:NSMakeRange(start,end-start)];
+        if ( [uString integerValue] > unread)
+          unread = [uString integerValue];
+      }
+      
+      [[[NSApplication sharedApplication] dockTile]setBadgeLabel:[NSString stringWithFormat:@"%ld",(long)unread]];
     }
 
   }
