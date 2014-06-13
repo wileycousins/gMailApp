@@ -118,7 +118,7 @@
 
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame {
   for( NSTabViewItem *item in [tabView tabViewItems] ){
-    if (frame == [[item view] mainFrame]) {
+    if (frame == [(WebView *)[item view] mainFrame]) {
       NSString *tabTitle;
       NSInteger start = [title rangeOfString:@"-"].location+1;
       NSInteger end = [title rangeOfString:@"-" options:NSBackwardsSearch].location;
@@ -140,7 +140,7 @@
         // set the notification center stuff
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = tabTitle;
-        WebView *webView = [[tabView selectedTabViewItem] view];
+        WebView *webView = (WebView *)[[tabView selectedTabViewItem] view];
         NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
         NSLog(@"msg: %@",msg);
         notification.informativeText = msg;
