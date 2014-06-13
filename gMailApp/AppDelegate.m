@@ -27,6 +27,8 @@
   [window setInitialFirstResponder:tabView];
   [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
   
+  [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
+  
   //register to listen for event
   [[NSNotificationCenter defaultCenter]
    addObserver:self
