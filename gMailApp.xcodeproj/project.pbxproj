@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5CF7E34194AA1B8003239BA /* gmail-icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = A5CF7E33194AA1B8003239BA /* gmail-icons.icns */; };
 		A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E58485194A2F8E00BAEEAD /* Cocoa.framework */; };
 		A5E58490194A2F8E00BAEEAD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E5848E194A2F8E00BAEEAD /* InfoPlist.strings */; };
 		A5E58492194A2F8E00BAEEAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E58491194A2F8E00BAEEAD /* main.m */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5CF7E33194AA1B8003239BA /* gmail-icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "gmail-icons.icns"; sourceTree = "<group>"; };
 		A5E58482194A2F8E00BAEEAD /* gMailApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gMailApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E58485194A2F8E00BAEEAD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A5E58488194A2F8E00BAEEAD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -79,6 +81,7 @@
 		A5E58479194A2F8E00BAEEAD = {
 			isa = PBXGroup;
 			children = (
+				A5CF7E33194AA1B8003239BA /* gmail-icons.icns */,
 				A5E5848B194A2F8E00BAEEAD /* gMailApp */,
 				A5E584A9194A2F8E00BAEEAD /* gMailAppTests */,
 				A5E58484194A2F8E00BAEEAD /* Frameworks */,
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E58490194A2F8E00BAEEAD /* InfoPlist.strings in Resources */,
+				A5CF7E34194AA1B8003239BA /* gmail-icons.icns in Resources */,
 				A5E5849E194A2F8E00BAEEAD /* Images.xcassets in Resources */,
 				A5E58496194A2F8E00BAEEAD /* Credits.rtf in Resources */,
 				A5E5849C194A2F8E00BAEEAD /* MainMenu.xib in Resources */,
@@ -388,7 +392,6 @@
 		A5E584B4194A2F8E00BAEEAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gMailApp/gMailApp-Prefix.pch";
@@ -401,7 +404,6 @@
 		A5E584B5194A2F8E00BAEEAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gMailApp/gMailApp-Prefix.pch";
@@ -470,6 +472,7 @@
 				A5E584B5194A2F8E00BAEEAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5E584B6194A2F8E00BAEEAD /* Build configuration list for PBXNativeTarget "gMailAppTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +481,7 @@
 				A5E584B8194A2F8E00BAEEAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

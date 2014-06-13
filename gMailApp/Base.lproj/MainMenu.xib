@@ -384,8 +384,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="1100" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" drawsBackground="NO" type="leftTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5">
-                        <rect key="frame" x="2" y="0.0" width="1098" height="602"/>
+                    <tabView fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5">
+                        <rect key="frame" x="0.0" y="0.0" width="1100" height="604"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems/>
