@@ -42,6 +42,12 @@
   [self addNewTab:requestObj];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    if(!window.isVisible) {
+        [window makeKeyAndOrderFront:self];
+    }
+}
+
 //event handler when event occurs
 -(void)eventHandler: (NSNotification *) notification
 {
