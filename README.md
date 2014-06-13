@@ -5,7 +5,7 @@ a basic OS X app for gmail
 
 # requirements
 
-*XCode
+* XCode
 
 # license
 MIT LICENSE
