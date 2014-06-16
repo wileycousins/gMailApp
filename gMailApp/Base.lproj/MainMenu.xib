@@ -220,6 +220,22 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="pJC-eV-d5Y"/>
+                            <menuItem title="Back" keyEquivalent="" id="Uil-ww-yGu">
+                                <connections>
+                                    <action selector="goBack:" target="-1" id="G0s-cC-lKb"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Forward" keyEquivalent="" id="GTW-dG-cuc">
+                                <connections>
+                                    <action selector="goForward:" target="-1" id="lwb-eL-hiJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Refresh" keyEquivalent="r" id="kQl-UP-AMG">
+                                <connections>
+                                    <action selector="reload:" target="-1" id="B0m-TE-mlE"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="7nb-Yj-0iT"/>
                             <menuItem title="Switch tab to left" id="2aj-Kf-gl8">
                                 <string key="keyEquivalent" base64-UTF8="YES">
 GQ
@@ -255,6 +271,12 @@ CQ
                                         </menuItem>
                                     </items>
                                 </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="re9-tV-JB4"/>
+                            <menuItem title="Fullscreen" keyEquivalent="F" id="hBN-mZ-uPn">
+                                <connections>
+                                    <action selector="toggleFullScreen:" target="QvC-M9-y7g" id="5jf-sz-z3o"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
@@ -300,7 +322,7 @@ CQ
         </menu>
         <window title="gMailApp" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="MyWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="63" y="378" width="1100" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
@@ -308,7 +330,7 @@ CQ
                 <rect key="frame" x="0.0" y="0.0" width="1100" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView appearanceType="lightContent" fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5">
+                    <tabView appearanceType="lightContent" fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-Ab-Cl5" customClass="MyTabView">
                         <rect key="frame" x="0.0" y="0.0" width="1100" height="604"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
@@ -449,7 +471,6 @@ CQ
             </view>
             <connections>
                 <outlet property="allOnOff" destination="OQT-T0-zlZ" id="8Z9-rl-oYJ"/>
-                <outlet property="delegate" destination="-3" id="gAs-At-7T3"/>
                 <outlet property="initialFirstResponder" destination="yOb-eq-Yy6" id="i0t-3E-a7r"/>
                 <outlet property="popupsOnOff" destination="vus-Kt-Kke" id="Z1v-U2-XfV"/>
                 <outlet property="reopenOnOff" destination="ZB3-00-IOe" id="m2B-gL-3V4"/>

@@ -90,7 +90,7 @@
   NSInteger index = [[tabView tabViewItems] count];
   NSString *tabName = [NSString stringWithFormat:@"gMail - %ld",(long)index];
   NSTabViewItem *item = [[NSTabViewItem alloc] initWithIdentifier:tabName ];
-  WebView *newWebView = [[WebView alloc] init];
+  MyWebView *newWebView = [[MyWebView alloc] init];
   [newWebView setUIDelegate:self];
   [newWebView setPolicyDelegate:self];
   [newWebView setFrameLoadDelegate:self];

@@ -86,6 +86,10 @@
     [tabView selectNextTabViewItem:sender];
 }
 
+- (void)swipeWithEvent:(NSEvent *)event {
+  NSLog(@"swipe");
+}
+
 // make sure we can handle events properly
 - (BOOL)acceptsFirstResponder
 {

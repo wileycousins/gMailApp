@@ -17,7 +17,23 @@
     // set delegate
     [self setDelegate: self];
   }
+
   return self;
+}
+
+- (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis {
+  return YES;
+}
+
+- (void)scrollWheel:(NSEvent *)theEvent {
+  if([theEvent momentumPhase] == NSEventPhaseChanged ) {
+    WebView *webView = [[[self contentView] selectedTabViewItem] view];
+    if ( [theEvent deltaX] > 1.0 ){
+      [webView goBack:nil];
+    } else if ( [theEvent deltaX] < -1.0 ){
+      [webView goForward:nil];
+    }
+  }
 }
 
 // ctrl + shift + tab
@@ -49,5 +65,6 @@
 {
   return YES;
 }
+
 
 @end

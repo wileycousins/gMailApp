@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A54FF57F194BBA3100A810C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A54FF57E194BBA3100A810C9 /* Images.xcassets */; };
 		A5807465194F367200F4F146 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5807464194F367200F4F146 /* Preferences.m */; };
+		A5807468194F4CCF00F4F146 /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5807467194F4CCF00F4F146 /* MyWebView.m */; };
+		A580746B194F52F800F4F146 /* MyTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = A580746A194F52F800F4F146 /* MyTabView.m */; };
 		A5CF7E34194AA1B8003239BA /* gmail-icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = A5CF7E33194AA1B8003239BA /* gmail-icons.icns */; };
 		A5CF7E38194B57EA003239BA /* MyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF7E37194B57EA003239BA /* MyWindow.m */; };
 		A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E58485194A2F8E00BAEEAD /* Cocoa.framework */; };
@@ -38,6 +40,10 @@
 		A54FF57E194BBA3100A810C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A5807463194F367200F4F146 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		A5807464194F367200F4F146 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		A5807466194F4CCF00F4F146 /* MyWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWebView.h; sourceTree = "<group>"; };
+		A5807467194F4CCF00F4F146 /* MyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWebView.m; sourceTree = "<group>"; };
+		A5807469194F52F800F4F146 /* MyTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabView.h; sourceTree = "<group>"; };
+		A580746A194F52F800F4F146 /* MyTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabView.m; sourceTree = "<group>"; };
 		A5CF7E33194AA1B8003239BA /* gmail-icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "gmail-icons.icns"; sourceTree = "<group>"; };
 		A5CF7E35194B4C91003239BA /* gMailApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gMailApp.entitlements; sourceTree = "<group>"; };
 		A5CF7E36194B57EA003239BA /* MyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWindow.h; sourceTree = "<group>"; };
@@ -132,11 +138,15 @@
 				A5CF7E35194B4C91003239BA /* gMailApp.entitlements */,
 				A5E58497194A2F8E00BAEEAD /* AppDelegate.h */,
 				A5E58498194A2F8E00BAEEAD /* AppDelegate.m */,
+				A5807466194F4CCF00F4F146 /* MyWebView.h */,
+				A5807467194F4CCF00F4F146 /* MyWebView.m */,
 				A5E5849A194A2F8E00BAEEAD /* MainMenu.xib */,
 				A5807463194F367200F4F146 /* Preferences.h */,
 				A5807464194F367200F4F146 /* Preferences.m */,
 				A5CF7E36194B57EA003239BA /* MyWindow.h */,
 				A5CF7E37194B57EA003239BA /* MyWindow.m */,
+				A5807469194F52F800F4F146 /* MyTabView.h */,
+				A580746A194F52F800F4F146 /* MyTabView.m */,
 				A54FF57E194BBA3100A810C9 /* Images.xcassets */,
 				A5E5848C194A2F8E00BAEEAD /* Supporting Files */,
 			);
@@ -287,6 +297,8 @@
 				A5E58499194A2F8E00BAEEAD /* AppDelegate.m in Sources */,
 				A5E58492194A2F8E00BAEEAD /* main.m in Sources */,
 				A5807465194F367200F4F146 /* Preferences.m in Sources */,
+				A580746B194F52F800F4F146 /* MyTabView.m in Sources */,
+				A5807468194F4CCF00F4F146 /* MyWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
