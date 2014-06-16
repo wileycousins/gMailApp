@@ -7,7 +7,6 @@
 //
 
 #import "MyWindow.h"
-#import "AppDelegate.h"
 
 @implementation MyWindow
 

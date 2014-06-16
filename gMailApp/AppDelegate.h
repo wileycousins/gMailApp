@@ -9,11 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "MyWindow.h"
+#import "Preferences.h"
 
 @class MyWindow;
+@class Preferences;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSUserNotificationCenterDelegate>
 
 @property (assign) IBOutlet MyWindow *window;
+@property (assign) IBOutlet Preferences *preferences;
 @property (weak) IBOutlet NSView *mainView;
 @property (weak) IBOutlet WebView *loaderView;
 @property (weak) IBOutlet NSTabView *tabView;

@@ -14,6 +14,7 @@
 @synthesize mainView;
 @synthesize loaderView;
 @synthesize tabView;
+@synthesize preferences;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -35,7 +36,7 @@
   NSArray *tabs = [settings valueForKey:@"tabs"];
   
   // if there are saved tabs, load them
-  if (tabs != nil && tabs.count > 0) {
+  if (tabs != nil && tabs.count > 0 && [[NSUserDefaults standardUserDefaults] boolForKey:@"reopen"]) {
     for( NSString *urlAddress in tabs){
       NSURL *url = [NSURL URLWithString:urlAddress];
       NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
@@ -49,6 +50,8 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [self addNewTab:requestObj];
   }
+  
+  [preferences loadPreferences];
 }
 
 
@@ -177,9 +180,11 @@
           NSString *msg = [webView stringByEvaluatingJavaScriptFromString: @"document.getElementsByClassName('zE')[0].getElementsByTagName('b')[0].innerText"];
           notification.informativeText = msg;
         }
-        notification.soundName = NSUserNotificationDefaultSoundName;
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"not_sounds"])
+          notification.soundName = NSUserNotificationDefaultSoundName;
         
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"not_all"])
+          [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
       }
     }
   }
@@ -203,7 +208,7 @@
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
      shouldPresentNotification:(NSUserNotification *)notification
 {
-  return YES;
+  return [[NSUserDefaults standardUserDefaults] boolForKey:@"not_popups"];
 }
 
 @end

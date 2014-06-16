@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="loaderView" destination="wv8-c4-bRA" id="Kd8-UT-x3G"/>
                 <outlet property="mainView" destination="EiT-Mj-1SZ" id="L7s-vh-lUn"/>
+                <outlet property="preferences" destination="R8c-e4-MaU" id="ARo-Bg-SfT"/>
                 <outlet property="tabView" destination="d8l-Ab-Cl5" id="EJr-Dg-hw0"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -34,7 +35,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                <connections>
+                                    <action selector="makeKeyAndOrderFront:" target="R8c-e4-MaU" id="I5P-VO-RA4"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Services" id="NMo-om-nkz">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -318,8 +323,8 @@ CQ
                 <outlet property="initialFirstResponder" destination="d8l-Ab-Cl5" id="f1D-b4-gg7"/>
             </connections>
         </window>
-        <webView id="wv8-c4-bRA">
-            <rect key="frame" x="0.0" y="0.0" width="254" height="200"/>
+        <webView hidden="YES" id="wv8-c4-bRA">
+            <rect key="frame" x="0.0" y="0.0" width="254" height="209"/>
             <autoresizingMask key="autoresizingMask"/>
             <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
                 <nil key="identifier"/>
@@ -328,5 +333,129 @@ CQ
                 <outlet property="UIDelegate" destination="QvC-M9-y7g" id="q1k-i6-V19"/>
             </connections>
         </webView>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="R8c-e4-MaU" customClass="Preferences">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="163" y="199" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" id="y5t-2J-wtY">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-eq-Yy6">
+                        <rect key="frame" x="-5" y="-10" width="490" height="285"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="General" identifier="1" id="stY-fR-X84">
+                                <view key="view" ambiguous="YES" id="6Ud-p1-nxj">
+                                    <rect key="frame" x="10" y="33" width="470" height="239"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZB3-00-IOe">
+                                            <rect key="frame" x="115" y="191" width="22" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aXz-ba-1Dw">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="reopenToggle:" target="R8c-e4-MaU" id="zez-Jt-Euc"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihw-H1-NUQ">
+                                            <rect key="frame" x="20" y="183" width="96" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Re-open windows" id="SH6-IL-KEc">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Notifications" identifier="2" id="Zyt-k7-wWU">
+                                <view key="view" id="AL5-bV-Ame">
+                                    <rect key="frame" x="10" y="33" width="470" height="239"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Anj-67-jYD">
+                                            <rect key="frame" x="20" y="191.5" width="65" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="All on/off" id="1Qa-TA-cEM">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VRS-15-dQn">
+                                            <rect key="frame" x="20" y="152" width="50" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Sounds" id="HtG-gF-Gbs">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4w-9Q-HCu">
+                                            <rect key="frame" x="20" y="112" width="50" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Popups" id="V75-tt-70h">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQT-T0-zlZ">
+                                            <rect key="frame" x="115" y="190" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="V57-qI-K2s">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="notificationsToggle:" target="R8c-e4-MaU" id="KK2-77-j4G"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oIW-Bq-CBx">
+                                            <rect key="frame" x="115" y="150" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eP8-Nm-qg4">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="soundToggle:" target="R8c-e4-MaU" id="KDf-3O-845"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vus-Kt-Kke">
+                                            <rect key="frame" x="115" y="110" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="djf-Oz-hyR">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="popupsToggle:" target="R8c-e4-MaU" id="mqh-iP-zDq"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="allOnOff" destination="OQT-T0-zlZ" id="8Z9-rl-oYJ"/>
+                <outlet property="delegate" destination="-3" id="gAs-At-7T3"/>
+                <outlet property="initialFirstResponder" destination="yOb-eq-Yy6" id="i0t-3E-a7r"/>
+                <outlet property="popupsOnOff" destination="vus-Kt-Kke" id="Z1v-U2-XfV"/>
+                <outlet property="reopenOnOff" destination="ZB3-00-IOe" id="m2B-gL-3V4"/>
+                <outlet property="soundsOnOff" destination="oIW-Bq-CBx" id="WBw-M5-InK"/>
+                <outlet property="tabView" destination="yOb-eq-Yy6" id="wuA-p9-Hij"/>
+            </connections>
+        </window>
     </objects>
 </document>
