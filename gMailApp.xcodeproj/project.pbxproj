@@ -12,8 +12,8 @@
 		A5807468194F4CCF00F4F146 /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5807467194F4CCF00F4F146 /* MyWebView.m */; };
 		A580746B194F52F800F4F146 /* MyTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = A580746A194F52F800F4F146 /* MyTabView.m */; };
 		A5B4EBEB1950A612008E1F0B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4EBEA1950A612008E1F0B /* StoreKit.framework */; };
-		A5C72E7B19508467003B81D6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C72E7A19508466003B81D6 /* Sparkle.framework */; };
-		A5C72E7D19508511003B81D6 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5C72E7A19508466003B81D6 /* Sparkle.framework */; };
+		A5B4EC16195238C7008E1F0B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4EC15195238C7008E1F0B /* Sparkle.framework */; };
+		A5B4EC17195238D9008E1F0B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5B4EC15195238C7008E1F0B /* Sparkle.framework */; };
 		A5CF7E34194AA1B8003239BA /* gmail-icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = A5CF7E33194AA1B8003239BA /* gmail-icons.icns */; };
 		A5CF7E38194B57EA003239BA /* MyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF7E37194B57EA003239BA /* MyWindow.m */; };
 		A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E58485194A2F8E00BAEEAD /* Cocoa.framework */; };
@@ -46,7 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A5C72E7D19508511003B81D6 /* Sparkle.framework in CopyFiles */,
+				A5B4EC17195238D9008E1F0B /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,7 @@
 		A5807469194F52F800F4F146 /* MyTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabView.h; sourceTree = "<group>"; };
 		A580746A194F52F800F4F146 /* MyTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabView.m; sourceTree = "<group>"; };
 		A5B4EBEA1950A612008E1F0B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A5C72E7A19508466003B81D6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		A5B4EC15195238C7008E1F0B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Sparkle/Build/Products/Debug/Sparkle.framework; sourceTree = "<group>"; };
 		A5CF7E33194AA1B8003239BA /* gmail-icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "gmail-icons.icns"; sourceTree = "<group>"; };
 		A5CF7E35194B4C91003239BA /* gMailApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gMailApp.entitlements; sourceTree = "<group>"; };
 		A5CF7E36194B57EA003239BA /* MyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWindow.h; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E584BA194A301F00BAEEAD /* WebKit.framework in Frameworks */,
-				A5C72E7B19508467003B81D6 /* Sparkle.framework in Frameworks */,
 				A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */,
 				A5B4EBEB1950A612008E1F0B /* StoreKit.framework in Frameworks */,
+				A5B4EC16195238C7008E1F0B /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +134,8 @@
 		A5E58484194A2F8E00BAEEAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5B4EC15195238C7008E1F0B /* Sparkle.framework */,
 				A5B4EBEA1950A612008E1F0B /* StoreKit.framework */,
-				A5C72E7A19508466003B81D6 /* Sparkle.framework */,
 				A5E584B9194A301F00BAEEAD /* WebKit.framework */,
 				A5E58485194A2F8E00BAEEAD /* Cocoa.framework */,
 				A5E584A4194A2F8E00BAEEAD /* XCTest.framework */,
@@ -467,6 +467,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Sparkle/Build/Products/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gMailApp/gMailApp-Prefix.pch";
@@ -488,6 +489,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Sparkle/Build/Products/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gMailApp/gMailApp-Prefix.pch";
