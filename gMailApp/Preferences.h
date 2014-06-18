@@ -22,6 +22,7 @@ BOOL reopenTabs;
 @property (weak) IBOutlet NSButton *popupsOnOff;
 
 @property (weak) IBOutlet NSButton *reopenOnOff;
+@property (weak) IBOutlet NSTextField *textSize;
 
 -(void)loadPreferences;
 

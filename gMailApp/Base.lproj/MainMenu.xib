@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="5056"/>
@@ -41,6 +41,12 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                            <menuItem title="Check for Updates" id="8hC-ej-pg8">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="Bt3-MB-xaQ" id="uwE-Ho-CrG"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Services" id="NMo-om-nkz">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
@@ -90,12 +96,6 @@
                             <menuItem title="Close Tab" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>
                                     <action selector="closeTab:" target="Voe-Tx-rLC" id="hq8-I0-2BC"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                            <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
-                                <connections>
-                                    <action selector="print:" target="-1" id="qaZ-4w-aoO"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -264,7 +264,7 @@ CQ
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Switch to tab number 2" keyEquivalent="2" id="zQi-v1-mcb"/>
-                                        <menuItem title="Switch to last tab" keyEquivalent="0" id="jhS-7M-xXi">
+                                        <menuItem title="Switch to last tab" keyEquivalent="9" id="jhS-7M-xXi">
                                             <connections>
                                                 <action selector="selectLastTabViewItem:" target="d8l-Ab-Cl5" id="4Cd-9H-dOc"/>
                                             </connections>
@@ -290,11 +290,8 @@ CQ
                                     <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Zoom" id="R4o-n2-Eq4">
+                            <menuItem title="Item" id="z90-y4-Rq6">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="performZoom:" target="-1" id="DIl-cC-cCs"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
                             <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
@@ -375,7 +372,7 @@ CQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZB3-00-IOe">
-                                            <rect key="frame" x="115" y="191" width="22" height="18"/>
+                                            <rect key="frame" x="135" y="191" width="22" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aXz-ba-1Dw">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -394,6 +391,38 @@ CQ
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smA-mb-DEd">
+                                            <rect key="frame" x="20" y="135" width="116" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Text size (requires restart)" id="tC5-dt-KQm">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fs3-ym-JG0">
+                                            <rect key="frame" x="135" y="144" width="50" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="16" drawsBackground="YES" id="wNh-bI-fif">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="updateTextSize:" target="R8c-e4-MaU" id="f2b-bI-gPc"/>
+                                            </connections>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOT-bT-YpG">
+                                            <rect key="frame" x="167" y="25" width="136" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="roundTextured" title="Update Preferences" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kH9-qt-Uks">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="updatePreferences:" target="R8c-e4-MaU" id="IgS-Oi-H31"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -462,6 +491,17 @@ CQ
                                                 <action selector="popupsToggle:" target="R8c-e4-MaU" id="mqh-iP-zDq"/>
                                             </connections>
                                         </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Np-fV-VzR">
+                                            <rect key="frame" x="167" y="18" width="136" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="roundTextured" title="Update Preferences" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="exY-Ee-cq5">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="updatePreferences:" target="R8c-e4-MaU" id="Dt4-Ah-cVh"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -476,7 +516,9 @@ CQ
                 <outlet property="reopenOnOff" destination="ZB3-00-IOe" id="m2B-gL-3V4"/>
                 <outlet property="soundsOnOff" destination="oIW-Bq-CBx" id="WBw-M5-InK"/>
                 <outlet property="tabView" destination="yOb-eq-Yy6" id="wuA-p9-Hij"/>
+                <outlet property="textSize" destination="Fs3-ym-JG0" id="hfZ-cN-mcH"/>
             </connections>
         </window>
+        <customObject id="Bt3-MB-xaQ" customClass="SUUpdater"/>
     </objects>
 </document>

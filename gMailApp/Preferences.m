@@ -15,6 +15,7 @@
 @synthesize popupsOnOff;
 @synthesize reopenOnOff;
 @synthesize tabView;
+@synthesize textSize;
 
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
@@ -51,21 +52,38 @@
     [reopenOnOff setState:[settings boolForKey:@"reopen"]];
   else
     [settings setBool:YES forKey:@"reopen"];
+  if( [settings valueForKey:@"text_size"] != nil )
+    [textSize setIntegerValue:[settings integerForKey:@"text_size"]];
+  else
+    [settings setInteger:[textSize intValue] forKey:@"text_size"];
+}
+
+- (IBAction)updatePreferences:(id)sender {
+  [self updateTextSize:nil];
+  [self reopenToggle:nil];
+  [self notificationsToggle:nil];
+  [self soundToggle:nil];
+  [self popupsToggle:nil];
+  [self close];
+}
+
+- (IBAction)updateTextSize:(id)sender {
+  [[NSUserDefaults standardUserDefaults] setInteger:[textSize intValue] forKey:@"text_size"];
 }
 
 - (IBAction)reopenToggle:(id)sender {
-  [[NSUserDefaults standardUserDefaults] setBool:[sender state] forKey:@"reopen"];
+  [[NSUserDefaults standardUserDefaults] setBool:[reopenOnOff state] forKey:@"reopen"];
 }
 - (IBAction)notificationsToggle:(id)sender {
-  [[NSUserDefaults standardUserDefaults] setBool:[sender state] forKey:@"not_all"];
+  [[NSUserDefaults standardUserDefaults] setBool:[allOnOff state] forKey:@"not_all"];
   [soundsOnOff setEnabled:[sender state]];
   [popupsOnOff setEnabled:[sender state]];
 }
 - (IBAction)soundToggle:(id)sender {
-  [[NSUserDefaults standardUserDefaults] setBool:[sender state] forKey:@"not_sounds"];
+  [[NSUserDefaults standardUserDefaults] setBool:[soundsOnOff state] forKey:@"not_sounds"];
 }
 - (IBAction)popupsToggle:(id)sender {
-  [[NSUserDefaults standardUserDefaults] setBool:[sender state] forKey:@"not_popups"];
+  [[NSUserDefaults standardUserDefaults] setBool:[popupsOnOff state] forKey:@"not_popups"];
 }
 
 // ctrl + shift + tab

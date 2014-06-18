@@ -94,6 +94,12 @@
   [newWebView setUIDelegate:self];
   [newWebView setPolicyDelegate:self];
   [newWebView setFrameLoadDelegate:self];
+  int text_size = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"text_size"];
+  if (text_size == 0) {
+    text_size = 16;
+    [[NSUserDefaults standardUserDefaults] setInteger:text_size forKey:@"text_size"];
+  }
+  [[newWebView preferences] setDefaultFontSize:text_size];
   [item setView: newWebView];
   [item setLabel:tabName];
   [tabView addTabViewItem:item];

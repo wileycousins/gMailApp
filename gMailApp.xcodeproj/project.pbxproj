@@ -11,6 +11,9 @@
 		A5807465194F367200F4F146 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5807464194F367200F4F146 /* Preferences.m */; };
 		A5807468194F4CCF00F4F146 /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5807467194F4CCF00F4F146 /* MyWebView.m */; };
 		A580746B194F52F800F4F146 /* MyTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = A580746A194F52F800F4F146 /* MyTabView.m */; };
+		A5B4EBEB1950A612008E1F0B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4EBEA1950A612008E1F0B /* StoreKit.framework */; };
+		A5C72E7B19508467003B81D6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C72E7A19508466003B81D6 /* Sparkle.framework */; };
+		A5C72E7D19508511003B81D6 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5C72E7A19508466003B81D6 /* Sparkle.framework */; };
 		A5CF7E34194AA1B8003239BA /* gmail-icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = A5CF7E33194AA1B8003239BA /* gmail-icons.icns */; };
 		A5CF7E38194B57EA003239BA /* MyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF7E37194B57EA003239BA /* MyWindow.m */; };
 		A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E58485194A2F8E00BAEEAD /* Cocoa.framework */; };
@@ -36,6 +39,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A5C72E7C195084F5003B81D6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A5C72E7D19508511003B81D6 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A54FF57E194BBA3100A810C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A5807463194F367200F4F146 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
@@ -44,6 +60,8 @@
 		A5807467194F4CCF00F4F146 /* MyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWebView.m; sourceTree = "<group>"; };
 		A5807469194F52F800F4F146 /* MyTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabView.h; sourceTree = "<group>"; };
 		A580746A194F52F800F4F146 /* MyTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabView.m; sourceTree = "<group>"; };
+		A5B4EBEA1950A612008E1F0B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A5C72E7A19508466003B81D6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		A5CF7E33194AA1B8003239BA /* gmail-icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "gmail-icons.icns"; sourceTree = "<group>"; };
 		A5CF7E35194B4C91003239BA /* gMailApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gMailApp.entitlements; sourceTree = "<group>"; };
 		A5CF7E36194B57EA003239BA /* MyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWindow.h; sourceTree = "<group>"; };
@@ -75,7 +93,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E584BA194A301F00BAEEAD /* WebKit.framework in Frameworks */,
+				A5C72E7B19508467003B81D6 /* Sparkle.framework in Frameworks */,
 				A5E58486194A2F8E00BAEEAD /* Cocoa.framework in Frameworks */,
+				A5B4EBEB1950A612008E1F0B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +134,8 @@
 		A5E58484194A2F8E00BAEEAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5B4EBEA1950A612008E1F0B /* StoreKit.framework */,
+				A5C72E7A19508466003B81D6 /* Sparkle.framework */,
 				A5E584B9194A301F00BAEEAD /* WebKit.framework */,
 				A5E58485194A2F8E00BAEEAD /* Cocoa.framework */,
 				A5E584A4194A2F8E00BAEEAD /* XCTest.framework */,
@@ -193,6 +215,7 @@
 				A5E5847E194A2F8E00BAEEAD /* Sources */,
 				A5E5847F194A2F8E00BAEEAD /* Frameworks */,
 				A5E58480194A2F8E00BAEEAD /* Resources */,
+				A5C72E7C195084F5003B81D6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -233,6 +256,9 @@
 					A5E58481194A2F8E00BAEEAD = {
 						DevelopmentTeam = QMKGXFJC9Y;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 0;
 							};
@@ -372,6 +398,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -390,6 +417,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "64DA452C-C76F-47DF-8379-9D1C8A9D429D";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -410,6 +438,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -422,6 +451,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PROVISIONING_PROFILE = "64DA452C-C76F-47DF-8379-9D1C8A9D429D";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -431,14 +461,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = gMailApp/gMailApp.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gMailApp/gMailApp-Prefix.pch";
 				INFOPLIST_FILE = "gMailApp/gMailApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FD3D3AD5-37CB-41DF-8361-A39FFE23FB5F";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -448,14 +482,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = gMailApp/gMailApp.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gMailApp/gMailApp-Prefix.pch";
 				INFOPLIST_FILE = "gMailApp/gMailApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FD3D3AD5-37CB-41DF-8361-A39FFE23FB5F";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
